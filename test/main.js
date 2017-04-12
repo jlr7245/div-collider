@@ -56,21 +56,21 @@ const rectSecond = {
     this.reDraw();
   },
   reDraw: function() {
-    const divTwo = document.querySelector('#divtwo');
-    divTwo.setAttribute('style', `left: ${this.y}px; top: ${this.x}px`);
+    const moveDiv = document.querySelector('#divtwo');
+    moveDiv.setAttribute('style', `left: ${this.y}px; top: ${this.x}px`);
     this.checkCollision();
   },
   checkCollision: function() {
-    const divTwo = document.querySelector('#divtwo');
+    const moveDiv = document.querySelector('#divtwo');
     if (rectFirst.x < this.x + this.width &&
       rectFirst.x + rectFirst.width > this.x &&
       rectFirst.y < this.y + this.height &&
       rectFirst.height + rectFirst.y > this.y) {
-      if (!divTwo.classList.contains('collision-state')) {
-        divTwo.classList.add('collision-state');
+      if (!moveDiv.classList.contains('collision-state')) {
+        moveDiv.classList.add('collision-state');
       }
-    } else if (divTwo.classList.contains('collision-state')) {
-      divTwo.classList.remove('collision-state');
+    } else if (moveDiv.classList.contains('collision-state')) {
+      moveDiv.classList.remove('collision-state');
     }
   },
 };
