@@ -45,6 +45,8 @@ const rectFirst = {
 };
 
 const rectSecond = {
+  // moveDiv: document.querySelector('#divtwo'),
+  // ..... or something like that
   x: null,
   y: null,
   height: null,
@@ -56,6 +58,7 @@ const rectSecond = {
     this.reDraw();
   },
   reDraw: function() {
+    // there should be a reference to moveDiv at the top
     const moveDiv = document.querySelector('#divtwo');
     moveDiv.setAttribute('style', `left: ${this.y}px; top: ${this.x}px`);
     this.checkCollision();
