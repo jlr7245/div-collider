@@ -61,15 +61,16 @@ const rectSecond = {
     this.checkCollision();
   },
   checkCollision: function() {
+    const divTwo = document.querySelector('#divtwo');
     if (rectFirst.x < this.x + this.width &&
       rectFirst.x + rectFirst.width > this.x &&
       rectFirst.y < this.y + this.height &&
       rectFirst.height + rectFirst.y > this.y) {
-        // const divTwo = document.querySelector('#divtwo');
-        // need to add a different class instead of resetting the style attribute --
-        // resetting the style attribute takes away the height/width that the redraw function adds
-        // divTwo.setAttribute('style', 'background-color: blue');
-        console.log('collision!');
+      if (!divTwo.classList.contains('collision-state')) {
+        divTwo.classList.add('collision-state');
+      }
+    } else if (divTwo.classList.contains('collision-state')) {
+      divTwo.classList.remove('collision-state');
     }
   },
 };
