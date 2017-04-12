@@ -66,6 +66,8 @@ const rectSecond = {
       rectFirst.y < this.y + this.height &&
       rectFirst.height + rectFirst.y > this.y) {
         // const divTwo = document.querySelector('#divtwo');
+        // need to add a different class instead of resetting the style attribute --
+        // resetting the style attribute takes away the height/width that the redraw function adds
         // divTwo.setAttribute('style', 'background-color: blue');
         console.log('collision!');
     }
