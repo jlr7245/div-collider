@@ -65,8 +65,9 @@ const rectSecond = {
       rectFirst.x + rectFirst.width > this.x &&
       rectFirst.y < this.y + this.height &&
       rectFirst.height + rectFirst.y > this.y) {
-        const divTwo = document.querySelector('#divtwo');
-        divTwo.setAttribute('style', 'background-color: blue');
+        // const divTwo = document.querySelector('#divtwo');
+        // divTwo.setAttribute('style', 'background-color: blue');
+        console.log('collision!');
     }
   },
 };
@@ -92,7 +93,15 @@ function moveDiv(e) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const rectOne = document.querySelector('#divone');
-  console.log(rectOne);
+  const divOne = document.querySelector('#divone');
+  rectFirst.height = divOne.clientHeight; /// this should go into some kind of constructor function
+  rectFirst.width = divOne.clientWidth;
+  rectFirst.x = divOne.clientTop;
+  rectFirst.y = divOne.clientLeft;
+  const divTwo = document.querySelector('#divtwo');
+  rectSecond.height = divTwo.clientHeight; /// this should go into some kind of constructor function
+  rectSecond.width = divTwo.clientWidth;
+  rectSecond.x = divTwo.clientTop;
+  rectSecond.y = divTwo.clientLeft;
   document.addEventListener('keydown', (e) => moveDiv(e));
 });
