@@ -110,6 +110,15 @@ document.addEventListener('DOMContentLoaded', () => {
   rectSecond.x = divTwo.clientTop;
   rectSecond.y = divTwo.clientLeft;
   document.addEventListener('keydown', (e) => moveDiv(e));
+
+////////
+
+  const theDivs = document.querySelectorAll('.anothercontainer div');
+  console.log(theDivs);
+  for (let i = 0; i < theDivs.length; i++) {
+    console.log(theDivs[i].classList.contains('anotherclass'));
+  }
+
 });
 
 
