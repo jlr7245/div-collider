@@ -12,7 +12,6 @@ const collider = {
   moveableDiv: null,
   staticDivs: [],
   checkCollision: function() {
-    console.log('checking');
     let hasJustCollided = false;
     for (let i = 0; i < this.staticDivs.length; i++) {
       const currentDiv = this.staticDivs[i];
@@ -90,11 +89,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const currentDiv = allTheDivs[i];
     if (currentDiv.dataset.dynamic === 'true') {
       currentDiv.setAttribute('style', 'left: 500px; top: 300px;');
-      const moveableDiv = new MoveDiv(positionCreator(currentDiv));
+      const moveableDiv = new MoveDiv(positionCreator(currentDiv), currentDiv);
       collider.moveableDiv = moveableDiv;
     } else {
       currentDiv.setAttribute('style', `left: ${Math.floor(Math.random() * 400)}px; top: ${Math.floor(Math.random() * 600)}px;`);
-      const staticDiv = new BaseDiv(positionCreator(currentDiv), currentDiv);
+      const staticDiv = new BaseDiv(positionCreator(currentDiv));
       collider.staticDivs.push(staticDiv);
     }
   }
