@@ -98,6 +98,15 @@ function moveDiv(e) {
   }
 }
 
+// document.addEventListener('DOMContentLoaded', function() {
+//   const allTheDivs = document.querySelectorAll('.collideme');
+//   for (let i = 0; i < allTheDivs.length; i++) {
+//     if (allTheDivs[i].dataset.dynamic === 'true') {
+//       allTheDivs[i].setAttribute('style', 'left: 500px; top: 300px;');
+//     }
+//   }
+// });
+
 document.addEventListener('DOMContentLoaded', () => {
   const divOne = document.querySelector('#divone');
   rectFirst.height = divOne.clientHeight; /// this should go into some kind of constructor function
