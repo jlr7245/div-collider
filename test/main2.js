@@ -1,3 +1,13 @@
+//////////// COLLISION ALGO FROM MDN
+/* 
+if (rectFirst.x < this.x + this.width &&
+   rectFirst.x + rectFirst.width > this.x &&
+   rectFirst.y < this.y + this.height &&
+   rectFirst.height + rectFirst.y > this.y) {
+
+}
+*/
+
 const collider = {
   moveableDiv: null,
   staticDivs: [],
