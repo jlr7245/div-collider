@@ -35,7 +35,7 @@ const collider = {
 class BaseDiv {
   constructor(position) {
     this.position = position;
-    }
+  }
 }
 
 class MoveDiv extends BaseDiv {
