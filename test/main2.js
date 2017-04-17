@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const moveableDiv = new MoveDiv(positionCreator(currentDiv), currentDiv);
       collider.moveableDiv = moveableDiv;
     } else {
-      currentDiv.setAttribute('style', `left: ${Math.floor(Math.random() * 200)}px; top: ${Math.floor(Math.random() * 500)}px;`);
+      currentDiv.setAttribute('style', `left: ${Math.floor(Math.random() * 400)}px; top: ${Math.floor(Math.random() * 600)}px;`);
       const staticDiv = new BaseDiv(positionCreator(currentDiv), currentDiv);
       collider.staticDivs.push(staticDiv);
     }
