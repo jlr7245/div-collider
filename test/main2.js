@@ -33,15 +33,15 @@ const collider = {
 };
 
 class BaseDiv {
-  constructor(position, ref) {
+  constructor(position) {
     this.position = position;
-    this.ref = ref;
-  }
+    }
 }
 
 class MoveDiv extends BaseDiv {
   constructor(position, ref) {
-    super(position, ref);
+    super(position);
+    this.ref = ref;
   }
   shiftPosition(x, y) {
     this.position.left += x;
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const currentDiv = allTheDivs[i];
     if (currentDiv.dataset.dynamic === 'true') {
       currentDiv.setAttribute('style', 'left: 500px; top: 300px;');
-      const moveableDiv = new MoveDiv(positionCreator(currentDiv), currentDiv);
+      const moveableDiv = new MoveDiv(positionCreator(currentDiv));
       collider.moveableDiv = moveableDiv;
     } else {
       currentDiv.setAttribute('style', `left: ${Math.floor(Math.random() * 400)}px; top: ${Math.floor(Math.random() * 600)}px;`);
