@@ -2,17 +2,6 @@ body {
   font-family: sans-serif;
 }
 
-/*.container {
-  width: 80vw;
-  max-width: 1000px;
-  margin: 150px auto;
-  padding: 50px;
-  box-sizing: border-box;
-  border: 1px solid #eee;
-
-  position: relative;
-  min-height: 50vh;
-}*/
 
 .collideme {
   height: 20px;
