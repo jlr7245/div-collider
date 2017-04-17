@@ -3,20 +3,20 @@ const collider = {
   staticDivs: [],
   checkCollision: function() {
     console.log('checking');
+    let hasJustCollided = false;
     for (let i = 0; i < this.staticDivs.length; i++) {
       const currentDiv = this.staticDivs[i];
-      let hasJustCollided = false;
       if (currentDiv.position.left < this.moveableDiv.position.left + this.moveableDiv.position.width &&
       currentDiv.position.left + currentDiv.position.width > this.moveableDiv.position.left &&
       currentDiv.position.top < this.moveableDiv.position.top + this.moveableDiv.position.height &&
       currentDiv.position.height + currentDiv.position.top > this.moveableDiv.position.top) {
+        hasJustCollided = true;
         if (!this.moveableDiv.ref.classList.contains('collision-state')) {
           this.moveableDiv.ref.classList.add('collision-state');
-          hasJustCollided = true;
-        } else if (this.moveableDiv.ref.classList.contains('collision-state') && !hasJustCollided) {
+        }
+      } else if (this.moveableDiv.ref.classList.contains('collision-state') && !hasJustCollided) {
           this.moveableDiv.ref.classList.remove('collision-state');
         }
-      }
     }
   },
 
@@ -64,6 +64,15 @@ function moveDiv(e) {
   }
 }
 
+function positionCreator(currentDiv) {
+  return {
+    left: currentDiv.getBoundingClientRect().left,
+    top: currentDiv.getBoundingClientRect().top,
+    height: currentDiv.getBoundingClientRect().height,
+    width: currentDiv.getBoundingClientRect().width
+  };
+}
+
 
 document.addEventListener('DOMContentLoaded', function() {
   const allTheDivs = document.querySelectorAll('.collideme');
@@ -71,23 +80,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const currentDiv = allTheDivs[i];
     if (currentDiv.dataset.dynamic === 'true') {
       currentDiv.setAttribute('style', 'left: 500px; top: 300px;');
-      const position = {
-        left: currentDiv.getBoundingClientRect().left,
-        top: currentDiv.getBoundingClientRect().top,
-        height: currentDiv.getBoundingClientRect().height,
-        width: currentDiv.getBoundingClientRect().width
-      };
-      const moveableDiv = new MoveDiv(position, currentDiv);
+      const moveableDiv = new MoveDiv(positionCreator(currentDiv), currentDiv);
       collider.moveableDiv = moveableDiv;
     } else {
       currentDiv.setAttribute('style', `left: ${Math.floor(Math.random() * 200)}px; top: ${Math.floor(Math.random() * 500)}px;`);
-      const position = {
-        left: currentDiv.getBoundingClientRect().left,
-        top: currentDiv.getBoundingClientRect().top,
-        height: currentDiv.getBoundingClientRect().height,
-        width: currentDiv.getBoundingClientRect().width
-      };
-      const staticDiv = new BaseDiv(position, currentDiv);
+      const staticDiv = new BaseDiv(positionCreator(currentDiv), currentDiv);
       collider.staticDivs.push(staticDiv);
     }
   }
